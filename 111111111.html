@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Station</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .weather-station {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+        }
+
+        .weather-info p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        #updateButton {
+            background-color: #4a90e2;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        #updateButton:hover {
+            background-color: #357ab7;
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-station">
+        <h1>Weather Station 🌦️</h1>
+        <div class="weather-info">
+            <p><strong>Temperature:</strong> <span id="temperature">--</span> °C</p>
+            <p><strong>Humidity:</strong> <span id="humidity">--</span> %</p>
+            <p><strong>Condition:</strong> <span id="condition">--</span></p>
+        </div>
+        <button id="updateButton">Update Weather</button>
+    </div>
+
+    <script>
+        // Mock weather data - Can be randomized for better visualization
+        const weatherData = [
+            { temperature: 22, humidity: 65, condition: "Sunny" },
+            { temperature: 15, humidity: 80, condition: "Cloudy" },
+            { temperature: 10, humidity: 90, condition: "Rainy" },
+            { temperature: 30, humidity: 40, condition: "Hot" },
+        ];
+
+        // Function to update weather information
+        function updateWeather() {
+            // Randomly pick weather data for demonstration
+            const randomWeather = weatherData[Math.floor(Math.random() * weatherData.length)];
+
+            const tempElement = document.getElementById('temperature');
+            const humidityElement = document.getElementById('humidity');
+            const conditionElement = document.getElementById('condition');
+
+            // Update the text content
+            tempElement.textContent = randomWeather.temperature;
+            humidityElement.textContent = randomWeather.humidity;
+            conditionElement.textContent = randomWeather.condition;
+        }
+
+        // Automatically update weather on page load
+        updateWeather();
+
+        // Adding event listener to the button for manual updates
+        document.getElementById('updateButton').addEventListener('click', updateWeather);
+    </script>
+</body>
+</html>
